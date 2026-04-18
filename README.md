@@ -80,6 +80,10 @@
     # Nastavi .env datoteko (MONGO_URI, JWT_SECRET)
     npm start
    ```
+   Zagon API
+   ```Bash
+   python -m uvicorn backend.api.main:app --reload
+   ```
 3. **Frontend Setup:**
    ```Bash
     cd frontend
