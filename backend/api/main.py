@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from backend.api.nutrition.routes import router as nutrition_router
+from backend.api.products.routes import router as products_router
 
 app = FastAPI(
     title="Gymmer API",
@@ -8,6 +9,7 @@ app = FastAPI(
 )
 
 app.include_router(nutrition_router)
+app.include_router(products_router)
 
 
 @app.get("/")
