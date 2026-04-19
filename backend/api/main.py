@@ -1,10 +1,10 @@
 from fastapi import FastAPI
-from backend.api.nutrition_routes import router as nutrition_router
+from backend.api.nutrition.routes import router as nutrition_router
 
 app = FastAPI(
     title="Gymmer API",
-    description="RESTful API for fetching and storing nutrition data.",
-    version="0.1.0"
+    description="RESTful API for nutrition and fitness data.",
+    version="0.1.0",
 )
 
 app.include_router(nutrition_router)
@@ -16,5 +16,5 @@ def root():
 
 
 @app.get("/health")
-def health():
+def health_check():
     return {"status": "ok"}
