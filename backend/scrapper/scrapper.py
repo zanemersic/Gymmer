@@ -80,6 +80,8 @@ def praskaj_vse_strani_in_hranilne_vrednosti():
             print(f"Napaka pri izdelku {url}: {e}")
             
         time.sleep(0.5)
+        # Test: procesira samo en izdelek za testiranje API integracije
+        break
         
     return vsi_podatki
 
@@ -99,3 +101,10 @@ if __name__ == "__main__":
     if rezultati:
         print("\nPrimer prvega izdelka:")
         print(json.dumps(rezultati[0], indent=4, ensure_ascii=False))
+
+        api_url = "http://127.0.0.1:8000/products/normalize-scraped"
+
+        odgovor_api = requests.post(api_url, json=rezultati[0])
+
+        print(f"Status odgovora API: {odgovor_api.status_code}")
+        print(json.dumps(odgovor_api.json(), indent=4, ensure_ascii=False))
